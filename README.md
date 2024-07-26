@@ -1,4 +1,4 @@
 # VCMP-FORUM-NOTIFICATIONS
 VCMP FORUM NOTIFICATIONS
 
-[img]https://imgur.com/a/7ctST0s[/img]
+<img src="https://imgur.com/a/7ctST0s">
