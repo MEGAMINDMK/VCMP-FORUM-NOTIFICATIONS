@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentation for rconweb04rel64.dll</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+        }
+        h1, h2, h3 {
+            color: #333;
+        }
+        code {
+            background-color: #f4f4f4;
+            border: 1px solid #ddd;
+            padding: 2px 4px;
+            font-size: 1.1em;
+        }
+        pre {
+            background-color: #f4f4f4;
+            border: 1px solid #ddd;
+            padding: 10px;
+            overflow-x: auto;
+        }
+        .example {
+            background-color: #f9f9f9;
+            border-left: 3px solid #007bff;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Documentation for <code>rconweb04rel64.dll</code></h1>
+
+    <p>The <code>rconweb04rel64.dll</code> plugin extends the Squirrel scripting environment by adding a function and a callback for web communication. It includes WebSocket server functionality and integrates with Squirrel scripts to handle web messages.</p>
+
+    <h2>Plugin Features</h2>
+    <ul>
+        <li><strong>WebSocket Server:</strong> Starts a WebSocket server on port 8080.</li>
+        <li><strong>Function:</strong> Adds a function to the Squirrel module.</li>
+        <li><strong>Callback:</strong> Registers a callback to handle incoming messages.</li>
+    </ul>
+
+    <h2>Function</h2>
+
+    <h3><code>SendWebMessage(string message)</code></h3>
+    <p><strong>Description:</strong> Sends a text message to the WebSocket server.</p>
+    <p><strong>Parameters:</strong></p>
+    <ul>
+        <li><code>message</code> (string): The text message to be sent.</li>
+    </ul>
+    <p><strong>Returns:</strong> Always returns <code>1</code>, indicating successful execution.</p>
+
+    <div class="example">
+        <h4>Example Usage:</h4>
+        <pre><code>local result = SendWebMessage("Hello, WebSocket!");</code></pre>
+    </div>
+
+    <h2>WebSocket Server</h2>
+	<h4>Include these to your cfg</h4>
+	<pre><code>rcon_password password
+wsport 8080
+wsannounce 1</code></pre>
+    
+
+    <h2>Installation</h2>
+    <ol>
+        <li>Place <code>rconweb04rel64.dll</code> in the appropriate plugin directory for your Squirrel environment.</li>
+        <li>Ensure that the WebSocket server port (8080) is available and not blocked by firewall rules, else you can use a different port</li>
+		<li>Make sure your wsport are also forwarded in order to connect with <a href="https://forum.vc-mp.org/index.php?topic=9455.msg54042#new">VCMP Forum App</a></li>
+    </ol>
+
+    <h2>Notes</h2>
+    <ul>
+        <li>Ensure that the WebSocket server port does not conflict with other services.</li>
+        <li>The <code>SendWebMessage</code> function always returns <code>1</code>, regardless of the actual sending result. Error handling should be done on the WebSocket server side if needed.</li>
+    </ul>
+
+</body>
+</html>
