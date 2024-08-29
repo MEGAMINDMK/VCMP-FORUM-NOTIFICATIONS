@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
+<!-- saved from url=(0117)https://rawcdn.githack.com/MEGAMINDMK/VCMP-FORUM-NOTIFICATIONS/ad05f5671e8b29a6d43a231dacb3c09c21300fcd/document.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Documentation for rconweb04rel64.dll</title>
     <style>
@@ -47,6 +47,22 @@
     </ul>
 
     <h2>Function</h2>
+    <h3><code>FindWebClient(integer clientId)</code></h3>
+    <p><strong>Description:</strong> Returns a table containing information about the client.</p>
+    <p><strong>Returns:</strong> Returns <code>null</code> on an invalid clientId or if the client is not in an open state for communication.</p>
+    
+    <h3><code>SendWebMessageTo(string msg, integer clientId)</code></h3>
+    <p><strong>Description:</strong> Sends a text message to the specified clientId.</p>
+    <p><strong>Returns:</strong> Returns <code>true</code> on success, <code>false</code> on failure, and throws an error on an invalid clientId.</p>
+    
+    <h3><code>KickWebClient(integer clientId)</code></h3>
+    <p><strong>Description:</strong> Kicks the specified clientId from the server.</p>
+    <p><strong>Returns:</strong> Returns <code>true</code> on success, <code>false</code> on failure, and throws an error on an invalid clientId.</p>
+    
+    <h3><code>BanWebClient(integer clientId)</code></h3>
+    <p><strong>Description:</strong> Bans the specified clientId from the server.</p>
+    <p><strong>Returns:</strong> Returns <code>true</code> on success, <code>false</code> on failure, and throws an error on an invalid clientId.</p>
+    
 
     <h3><code>SendWebMessage(string message)</code></h3>
     <p><strong>Description:</strong> Sends a text message to the WebSocket server.</p>
@@ -62,6 +78,16 @@
     </div>
 
     <h2>WebSocket Server</h2>
+
+    <h3>Callbacks</h3>
+    <h3><code>onWebClientJoin(table client)</code></h3>
+    <p><strong>Description:</strong> Triggered when a new web client joins.</p>
+    <p><strong>Returns:</strong> Return values are not processed.</p>
+    
+    <h3><code>onWebClientDisconnect(table client)</code></h3>
+    <p><strong>Description:</strong> Triggered when a web client disconnects.</p>
+    <p><strong>Returns:</strong> Return values are not processed.</p>
+    
 	<h4>Include these to your cfg</h4>
 	<pre><code>rcon_password password
 wsport 8080
@@ -80,6 +106,60 @@ wsannounce 1</code></pre>
         <li>Ensure that the WebSocket server port does not conflict with other services.</li>
         <li>The <code>SendWebMessage</code> function always returns <code>1</code>, regardless of the actual sending result. Error handling should be done on the WebSocket server side if needed.</li>
     </ul>
+<hr>
+<h1>Admin Game Commands Documentation</h1>
+    <p>This document provides an overview of the available commands for administrators to control web clients in the game. These commands allow admins to manage and interact with connected clients by their client IDs.</p>
 
-</body>
-</html>
+    <h2>Commands Overview</h2>
+
+    <div class="command">
+        <h3><code>/kickc (client-id)</code></h3>
+        <p><strong>Description:</strong> Kicks the specified client from the server.</p>
+        <p><strong>Usage:</strong> <code>/kickc (client-id)</code></p>
+        <p><strong>Parameters:</strong></p>
+        <ul>
+            <li><code>client-id</code>: The unique identifier of the client to be kicked.</li>
+        </ul>
+        <div class="example">
+            <strong>Example:</strong>
+            <p><code>/kickc 23</code> - This command kicks the client with ID 23 from the server.</p>
+        </div>
+    </div>
+
+    <div class="command">
+        <h3><code>/banc (client-id)</code></h3>
+        <p><strong>Description:</strong> Bans the specified client, preventing them from rejoining the server.</p>
+        <p><strong>Usage:</strong> <code>/banc (client-id)</code></p>
+        <p><strong>Parameters:</strong></p>
+        <ul>
+            <li><code>client-id</code>: The unique identifier of the client to be banned.</li>
+        </ul>
+        <div class="example">
+            <strong>Example:</strong>
+            <p><code>/banc 45</code> - This command bans the client with ID 45 from the server.</p>
+        </div>
+    </div>
+
+    <div class="command">
+        <h3><code>/fndc (client-id)</code></h3>
+        <p><strong>Description:</strong> Finds and displays the IP address and port number of the specified client.</p>
+        <p><strong>Usage:</strong> <code>/fndc (client-id)</code></p>
+        <p><strong>Parameters:</strong></p>
+        <ul>
+            <li><code>client-id</code>: The unique identifier of the client whose IP and port details are needed.</li>
+        </ul>
+        <div class="example">
+            <strong>Example:</strong>
+            <p><code>/fndc 12</code> - This command retrieves and displays the IP and port of the client with ID 12.</p>
+        </div>
+    </div>
+
+    <h2>Additional Notes</h2>
+    <ul>
+        <li>Ensure you have the necessary admin permissions to execute these commands.</li>
+        <li>The <code>client-id</code> must be valid and currently connected for the command to succeed.</li>
+        <li>Misuse of admin commands can disrupt client connections and gameplay; use them responsibly.</li>
+    </ul>
+
+
+</body></html>
