@@ -159,7 +159,20 @@ wsannounce 1</code></pre>
         <li>Ensure you have the necessary admin permissions to execute these commands.</li>
         <li>The <code>client-id</code> must be valid and currently connected for the command to succeed.</li>
         <li>Misuse of admin commands can disrupt client connections and gameplay; use them responsibly.</li>
+		<li>You can use rcon04rel64.dll to login by rcon and then use commands else you should have (player.IsAdmin=true) to make cmds work</li>
+		<li>Note that the above mentioned commands are not required to be scripted in server</li>
     </ul>
+<hr>
+  <h1>Documentation for <code>rcon04rel64.dll</code></h1>
 
+    <p>The <code>rcon04rel64.dll</code> plugin lets u login as server admin by adding it to server.cfg</p>
+
+    <h2>Server.cfg</h2>
+    <ul>
+        <li><strong>plugins/</strong> rcon04rel64.dll</li>
+        <li><strong>server.cfg</strong> plugins rcon04rel64</li>
+		<li><strong>rcon_password</strong> urpassword</li>
+		<li><strong>Usage:</strong> /rcon login urpassword</li>
+    </ul>
 
 </body></html>
